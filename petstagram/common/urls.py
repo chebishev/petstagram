@@ -1,7 +1,8 @@
 from django.urls import path
-
-from petstagram.common import views
+from .views import index
 
 urlpatterns = [
-    path('', views.index, name='index'),
+
+    # localhost:8000
+    path('', index, name='index'),
 ]

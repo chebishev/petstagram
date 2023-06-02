@@ -3,21 +3,21 @@ from django.shortcuts import render
 
 # TODO -> consider adding of full path to the templates
 # Create your views here.
-def register(request):    # optional
+def register_user(request):  # optional?
     return render(request, template_name='register-page.html')
 
 
-def login(request):
+def login_user(request):
     return render(request, 'login-page.html')
 
 
-def show_profile_details(request, pk):
+def profile_details(request, pk):
     return render(request, 'profile-details-page.html')
 
 
-def edit_profile(request, pk):
+def profile_edit(request, pk):
     return render(request, 'profile-edit-page.html')
 
 
-def delete_profile(request, pk):
+def profile_delete(request, pk):
     return render(request, 'profile-delete-page.html')

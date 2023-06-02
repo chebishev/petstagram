@@ -18,9 +18,18 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    # localhost:8000/admin/
     path('admin/', admin.site.urls),
+
+    # localhost:8000
     path('', include('petstagram.common.urls')),
+
+    # localhost:8000/accounts/
     path('accounts/', include('petstagram.accounts.urls')),
+
+    # localhost:8000/pets/
     path('pets/', include('petstagram.pets.urls')),
+
+    # localhost:8000/photos/
     path('photos/', include('petstagram.photos.urls')),
 ]

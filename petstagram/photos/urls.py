@@ -1,10 +1,17 @@
 from django.urls import path, include
-from petstagram.photos import views
+from .views import photo_add, photo_details, photo_edit
 
 urlpatterns = [
-    path('add', views.photo_add, name='photo-add'),
-    path('<int:pk>', include([
-        path('', views.photo_details, name='photo-details'),
-        path('edit/', views.photo_edit, name='photo-edit'),
+
+    # localhost:8000/photos/
+    path('add/', photo_add, name='photo-add'),
+
+    path('<int:pk>/', include([
+
+        # localhost:8000/photos/<int:pk>/
+        path('', photo_details, name='photo-details'),
+
+        # localhost:8000/photos/<int:pk>/edit/
+        path('edit/', photo_edit, name='photo-edit'),
     ]))
 ]
