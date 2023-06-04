@@ -4,6 +4,7 @@ from django.db import models
 from petstagram.pets.models import Pet
 from petstagram.photos.validators import validate_file_size
 
+
 # Create your models here.
 class Photo(models.Model):
     photo = models.ImageField(validators=(validate_file_size,))
