@@ -14,7 +14,6 @@ class Photo(models.Model):
         blank=True,
         null=True,
     )
-    # TODO check if this field is required or optional!!!
     location = models.TextField(
         max_length=30,
         blank=True,
