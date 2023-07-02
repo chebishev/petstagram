@@ -1,4 +1,3 @@
-import like as like
 from django.urls import path
 from .views import index, like_functionality, copy_link_to_clipboard
 
