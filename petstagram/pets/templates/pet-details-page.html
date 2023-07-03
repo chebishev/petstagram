@@ -2,8 +2,8 @@
 
 
 <!-- Starts Main Section -->
-<main>
-    {% block content %}
+
+{% block content %}
     <div class="pet-profile">
         <!-- Start Pet Personal Data Section -->
         <div class="profile">
@@ -39,17 +39,17 @@
         <!-- End Pet Personal Data Section -->
 
         <div class="pet-posts">
-        {% if all_photos %}
-            <!-- IF Photos Start Pet Photos Post Section -->
+            {% if all_photos %}
+                <!-- IF Photos Start Pet Photos Post Section -->
 
-            {% include 'pets-posts.html' %}
+                {% include 'pets-posts.html' %}
 
-            <!-- IF Photos End Pet Photos Post Section -->
+                <!-- IF Photos End Pet Photos Post Section -->
             {% else %}
-            <!-- IF NOT Photos Show No Post Image -->
-            <img class="no-posts" src="/images/no_posts.png" alt="no posts image">
+                <!-- IF NOT Photos Show No Post Image -->
+                <img class="no-posts" src="/images/no_posts.png" alt="no posts image">
             {% endif %}
         </div>
     </div>
-    {% endblock %}
-</main>
+{% endblock %}
+
