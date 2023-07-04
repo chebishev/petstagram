@@ -17,3 +17,6 @@ class PetForm(forms.ModelForm):
             'date_of_birth': 'Date of birth',
             'personal_photo': 'Link to Image',
         }
+
+class PetDeleteForm(PetForm):
+    pass
