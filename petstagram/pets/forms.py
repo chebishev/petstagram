@@ -14,14 +14,9 @@ class PetForm(forms.ModelForm):
         }
         labels = {
             'name': 'Pet name',
-            'date_of_birth': 'Date of Birth',
+            'date_of_birth': 'Date of birth',
             'personal_photo': 'Link to Image',
         }
 
-
 class PetDeleteForm(PetForm):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        for (_, field) in self.fields.items():
-            field.widget.attrs['readonly'] = 'readonly'
-            field.widget.attrs['disabled'] = 'disabled'
+    pass

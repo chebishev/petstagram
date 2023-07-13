@@ -6,7 +6,7 @@ urlpatterns = [
     # localhost:8000/pets/
     path('add/', pet_add, name='pet-add'),
 
-    path('<str:username>/pet/<slug:pet_slug>/', include([
+    path('<str:username>/pet/<slug:pet_name>/', include([
 
         # localhost:8000/pets/<str:username>/pet/<slug:pet_name>/
         path('', pet_details, name='pet-details'),

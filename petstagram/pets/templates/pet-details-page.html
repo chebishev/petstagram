@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends base.html %}
 
 
 <!-- Starts Main Section -->
@@ -12,7 +11,7 @@
                 <div class="profile_img">
                     <div class="image">
                         <!-- Pet URL Image -->
-                        <img src="{{ pet.personal_photo }}"
+                        <img src="{% url "pet.personal_photo" %}"
                              alt="img8">
                     </div>
                 </div>
@@ -22,11 +21,11 @@
                         <p>{{ pet.name }}</p>
                         <!-- Pet Edit Button -->
                         <a href="{% url "pet-edit" 'username' pet.slug %}">
-                            <img class="edit-img" src="{% static "images/edit-pen-icon-6.jpg" %}" alt="edit button">
+                            <img class="edit-img" src="/images/edit-pen-icon-6.jpg" alt="edit button">
                         </a>
                         <!-- Pet Delete Button -->
                         <a href="{% url 'pet-delete' "username" pet.slug %}">
-                            <img class="bin-img" src="{% static "images/icon-remove-22.jpg" %}" alt="bin button">
+                            <img class="bin-img" src="/images/icon-remove-22.jpg" alt="bin button">
                         </a>
                     </div>
                     <div class="data">
@@ -48,7 +47,7 @@
                 <!-- IF Photos End Pet Photos Post Section -->
             {% else %}
                 <!-- IF NOT Photos Show No Post Image -->
-                <img class="no-posts" src="{% static "images/no_posts.png" %}" alt="no posts image">
+                <img class="no-posts" src="/images/no_posts.png" alt="no posts image">
             {% endif %}
         </div>
     </div>
