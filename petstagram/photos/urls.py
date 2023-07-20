@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import photo_add, photo_details, photo_edit
+from .views import photo_add, photo_details, photo_edit, photo_delete
 
 urlpatterns = [
 
@@ -13,5 +13,8 @@ urlpatterns = [
 
         # localhost:8000/photos/<int:pk>/edit/
         path('edit/', photo_edit, name='photo-edit'),
+
+        # localhost:8000/photos/<int:pk>/delete/
+        path('delete/', photo_delete, name='photo-delete' )
     ]))
 ]
