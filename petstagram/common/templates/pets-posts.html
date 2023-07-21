@@ -141,10 +141,10 @@
                     </h3>
                 </div>
                 <!-- Start Add Comments Form -->
-                <form method="post" action="#">
-                    <label for="id_body">Body:</label>
-                    <textarea name="body" cols="40" rows="10" placeholder="Add comment..." maxlength="300"
-                              required="" id="id_body"></textarea>
+                {# TODO: We should add the comment form to the pet details view and the photo details view with the photo details template. Check if the form works correctly on the 3 pages.  #}
+                <form method="post" action="{% url 'comment' photo.id %}">
+                   {% csrf_token %}
+                   {{ form }}
                     <button type="submit">Post</button>
                 </form>
                 <!-- End Add Comments Form -->
