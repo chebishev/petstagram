@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load custom_filters %}
 <!-- Starts Main Section -->
 
     {% block content %}
@@ -10,8 +10,8 @@
 
             <!-- Start Login Form-->
             <form action="{% url 'login' %}" method="post">
-                {{ form.username }}
-                {{ form.password }}
+                {{ form.username|placeholder:'Enter username:' }}
+                {{ form.password|placeholder:'Enter password:' }}
                 <input type="hidden" value="{{ next }}" name="next">
                 {% csrf_token %}
                 <!-- Login Button-->

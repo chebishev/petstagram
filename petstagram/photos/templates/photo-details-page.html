@@ -49,7 +49,7 @@
 
                                 <!-- Link to Delete Pet Photo Page -->
                                 <a href="{% url 'photo-delete' photo.id %}">
-                                    <img class="bin-img" src="/images/icon-remove-22.jpg" alt="bin button">
+                                    <img class="bin-img" src="{% static 'images/icon-remove-22.jpg' %}" alt="bin button">
                                 </a>
                             </div>
                             <!-- End IF the viewer is the creator of the photo -->

@@ -12,6 +12,8 @@
                 {{ form.email }}
                 {{ form.password1 }}
                 {{ form.password2 }}
+
+                <input type="hidden" name="next" value="{{ next }}">
                 <!-- Register Button-->
                 <button type="submit">Register</button>
             </form>
