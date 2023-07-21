@@ -1,4 +1,4 @@
-{% extends base.html %}
+{% extends 'base.html' %}
 
 
 <!-- Starts Main Section -->
@@ -11,7 +11,7 @@
                 <div class="profile_img">
                     <div class="image">
                         <!-- Pet URL Image -->
-                        <img src="{% url "pet.personal_photo" %}"
+                        <img src="{{ pet.personal_photo }}"
                              alt="img8">
                     </div>
                 </div>
