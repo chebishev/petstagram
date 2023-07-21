@@ -6,11 +6,12 @@
         <div class="login-register-box">
             <h1>Petstagram</h1>
             <!-- Start Register Form-->
-            <form action="">
-                <input type="text" placeholder="Username"><br>
-                <input type="email" placeholder="Email"><br>
-                <input type="password" placeholder="Password"><br>
-                <input type="password" placeholder="Repeat Password"><br>
+            <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                {{ form.username }}
+                {{ form.email }}
+                {{ form.password1 }}
+                {{ form.password2 }}
                 <!-- Register Button-->
                 <button type="submit">Register</button>
             </form>

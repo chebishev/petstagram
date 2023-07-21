@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, resolve_url
 from pyperclip import copy
 
@@ -26,6 +27,7 @@ def index(request):
     return render(request, 'home-page.html', context)
 
 
+@login_required
 def like_functionality(request, photo_id):
     photo = Photo.objects.get(id=photo_id)
     liked_object = Like.objects.filter(to_photo_id=photo_id).first()
@@ -39,11 +41,13 @@ def like_functionality(request, photo_id):
     return redirect(request.META['HTTP_REFERER'] + f"#{photo_id}")
 
 
+@login_required
 def copy_link_to_clipboard(request, photo_id):
     copy(request.META['HTTP_HOST'] + resolve_url('photo-details', photo_id))
     return redirect(request.META['HTTP_REFERER'] + f"#{photo_id}")
 
 
+@login_required
 def add_comment(request, photo_id):
     if request.method == 'POST':
         photo = Photo.objects.get(pk=photo_id)
@@ -54,5 +58,3 @@ def add_comment(request, photo_id):
             comment.save()
 
         return redirect(request.META['HTTP_REFERER'] + f"#{photo_id}")
-
-

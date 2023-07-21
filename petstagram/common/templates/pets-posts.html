@@ -141,7 +141,6 @@
                     </h3>
                 </div>
                 <!-- Start Add Comments Form -->
-                {# TODO: We should add the comment form to the pet details view and the photo details view with the photo details template. Check if the form works correctly on the 3 pages.  #}
                 <form method="post" action="{% url 'comment' photo.id %}">
                    {% csrf_token %}
                    {{ form }}

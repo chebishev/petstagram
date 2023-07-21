@@ -1,13 +1,15 @@
 from django.urls import path, include
-from .views import register_user, login_user, profile_details, profile_edit, profile_delete
+from .views import RegisterUserView, LoginUserView, LogoutUserView, profile_details, profile_edit, profile_delete
 
 urlpatterns = [
 
     # localhost:8000/accounts/register/
-    path('register/', register_user, name='register'),
+    path('register/', RegisterUserView.as_view(), name='register'),
 
     # localhost:8000/accounts/login/
-    path('login/', login_user, name='login'),
+    path('login/', LoginUserView.as_view(), name='login'),
+
+    path('logout/', LogoutUserView.as_view(), name='logout'),
 
     path('profile/<int:pk>/', include([
 
