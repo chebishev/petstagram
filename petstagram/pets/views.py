@@ -8,9 +8,12 @@ from petstagram.pets.models import Pet
 @login_required
 def pet_add(request):
     form = PetForm(request.POST or None)
+
     if form.is_valid():
-        form.save()
-        return redirect('profile-details', pk=1)
+        pet = form.save(commit=False)
+        pet.user = request.user
+        pet.save()
+        return redirect('profile-details', request.user.pk)
 
     return render(request, 'pet-add-page.html', {'form': form})
 

@@ -26,6 +26,4 @@ class Photo(models.Model):
         Pet, blank=True
     )
     date_of_publication = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(
-        UserModel, on_delete=models.CASCADE
-    )
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)

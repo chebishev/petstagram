@@ -63,7 +63,7 @@
                         {% else %}
                             <!-- Link to Profile Page -->
                             <li class="nav-item">
-                                <a href="{% url 'profile-details' 1 %}">
+                                <a href="{% url 'profile-details' pk=object.pk %}">
                                     <i>Profile</i>
                                 </a>
                             </li>
