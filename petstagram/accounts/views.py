@@ -1,11 +1,10 @@
-from django.contrib.auth import login
+from django.contrib.auth import login, get_user_model
 from django.contrib.auth.views import LoginView, LogoutView
-from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
+from petstagram.accounts.forms import RegisterUserForm, LoginForm
 
-from petstagram.accounts.forms import RegisterUserForm
-
+UserModel = get_user_model()
 
 class RegisterUserView(CreateView):
     template_name = 'register-page.html'
@@ -33,19 +32,19 @@ class RegisterUserView(CreateView):
 class LoginUserView(LoginView):
     template_name = 'login-page.html'
     success_url = 'index'
-
+    form_class = LoginForm
 
 class LogoutUserView(LogoutView):
-    pass
+    next_page = reverse_lazy("login")
 
 
-def profile_details(request, pk):
-    return render(request, 'profile-details-page.html')
+class ProfileDetailsView(DetailView):
+    template_name = 'profile-details-page.html'
+    model = UserModel
 
 
-def profile_edit(request, pk):
-    return render(request, 'profile-edit-page.html')
+class ProfileEditView(UpdateView):
+    template_name = 'profile-edit-page.html'
 
-
-def profile_delete(request, pk):
-    return render(request, 'profile-delete-page.html')
+class ProfileDeleteView(DeleteView):
+    template_name = 'profile-delete-page.html'
