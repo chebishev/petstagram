@@ -1,6 +1,6 @@
 from django.contrib.auth import login, get_user_model
 from django.contrib.auth.views import LoginView, LogoutView
-from django.template.context_processors import static
+from django.templatetags.static import static
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from petstagram.accounts.forms import RegisterUserForm, LoginForm
@@ -43,20 +43,22 @@ class ProfileDetailsView(DetailView):
     template_name = 'profile-details-page.html'
     model = UserModel
 
-    profile_image = static('images/person')
+    profile_image = static('images/person.png')
 
-    def get_profile_image(self):
-        if self.object.profile_image is not None:
-            return self.object.profile_image
+    def get_profile_picture(self):
+        if self.object.profile_picture is not None:
+            return self.object.profile_picture
         return self.profile_image
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['profile_image'] = self.get_profile_image()
+        context['profile_image'] = self.get_profile_picture()
         context['pets'] = self.request.user.pets.all()
 class ProfileEditView(UpdateView):
+    model = UserModel
     template_name = 'profile-edit-page.html'
 
 class ProfileDeleteView(DeleteView):
+    model = UserModel
     template_name = 'profile-delete-page.html'
