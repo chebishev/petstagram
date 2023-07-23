@@ -21,12 +21,12 @@
 
                     <!-- IF the viewer is the owner of the profile -->
                     <!-- Link to Edit Profile Page -->
-                    <a href="{% url 'profile-edit' request.user.pk %}">
+                    <a href="{% url 'profile-edit' object.pk %}">
                         <img class="edit-img" src="{% static '/images/edit-pen-icon-6.jpg' %}" alt="edit button">
                     </a>
 
                     <!-- Link to Delete Profile Page -->
-                    <a href="{% url 'profile-delete' request.user.pk %}">
+                    <a href="{% url 'profile-delete' object.pk %}">
                         <img class="bin-img" src="{% static '/images/icon-remove-22.jpg' %}" alt="bin button">
                     </a>
                     <!-- End IF the viewer is the owner of the profile -->
@@ -68,13 +68,12 @@
                 {% for pet in pets %}
                     <!-- Start 1st Pet Details Page -->
                     <!-- Link to First Pet Details Page -->
-                    <a href="{% url 'pet-details' username="username" pk=pet.pk %}">
+                    <a href="{% url 'pet-details' object.username pet.pk %}">
                         <div class="head-pet">
                             <div class="status">
                                 <div class="image">
                                     <!-- Pet Image -->
-                                    <img src="{{ pet.personal_photo }}"
-                                         alt="pet img">
+                                    <img src="{{ pet.personal_photo }}" alt="pet img">
                                 </div>
                             </div>
                             <!-- Pet Name -->

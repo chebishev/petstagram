@@ -3,7 +3,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.templatetags.static import static
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
-from petstagram.accounts.forms import RegisterUserForm, LoginForm
+from petstagram.accounts.forms import RegisterUserForm, LoginUserForm
 
 UserModel = get_user_model()
 
@@ -32,8 +32,7 @@ class RegisterUserView(CreateView):
 
 class LoginUserView(LoginView):
     template_name = 'login-page.html'
-    success_url = 'index'
-    form_class = LoginForm
+    form_class = LoginUserForm
 
 class LogoutUserView(LogoutView):
     next_page = reverse_lazy("login")
@@ -55,10 +54,11 @@ class ProfileDetailsView(DetailView):
 
         context['profile_image'] = self.get_profile_picture()
         context['pets'] = self.request.user.pets.all()
+
+        return context
+
 class ProfileEditView(UpdateView):
-    model = UserModel
     template_name = 'profile-edit-page.html'
 
 class ProfileDeleteView(DeleteView):
-    model = UserModel
     template_name = 'profile-delete-page.html'
