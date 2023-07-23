@@ -53,7 +53,7 @@ class ProfileDetailsView(DetailView):
         context = super().get_context_data(**kwargs)
 
         context['profile_image'] = self.get_profile_picture()
-        context['pets'] = self.request.user.pets.all()
+        context['pets'] = self.request.user.pet_set.all()
 
         return context
 

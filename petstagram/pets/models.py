@@ -20,8 +20,7 @@ class Pet(models.Model):
         null=True,
     )
     slug = models.SlugField(unique=True, editable=False)
-    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='pets')
-
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE)
 
     # in order to have your own representation of the object instead of "Pet object (1)"
     def __str__(self):

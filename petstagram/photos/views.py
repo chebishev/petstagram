@@ -1,20 +1,30 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, redirect
-
+from django.shortcuts import render
+from django.urls import reverse
+from django.views.generic import CreateView
 from petstagram.common.forms import CommentForm
 from petstagram.photos.forms import PhotoCreateForm
 from petstagram.photos.models import Photo
 
 
-@login_required
-def photo_add(request):
-    form = PhotoCreateForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
-        form.save()
-        return redirect('index')
+class PhotoAddView(CreateView):
+    template_name = 'photo-add-page.html'
+    form_class = PhotoCreateForm
 
-    return render(request, 'photo-add-page.html', {'form': form})
+    def get_success_url(self):
+        return reverse("photo-details",
+                       kwargs={"pk": self.object.pk}
+                       )
 
+    # def get_form(self, *args, **kwargs):
+    #     form = super().get_form(*args, **kwargs)
+    #     form.user = self.request.user
+    #     return form
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
 
 @login_required
 def photo_details(request, pk):
