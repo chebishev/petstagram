@@ -16,10 +16,6 @@ class PhotoAddView(CreateView):
                        kwargs={"pk": self.object.pk}
                        )
 
-    # def get_form(self, *args, **kwargs):
-    #     form = super().get_form(*args, **kwargs)
-    #     form.user = self.request.user
-    #     return form
     def form_valid(self, form):
         self.object = form.save(commit=False)
         self.object.user = self.request.user
