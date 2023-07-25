@@ -35,15 +35,15 @@
                 <div class="data">
 
                     <!-- Total Number of Photos by the User -->
-                    <span>4</span>
+                    <span>{{ object.photo_set.count }}</span>
                     <p>photos</p>
 
                     <!-- Total Number of Pets owned by the User -->
-                    <span>7</span>
+                    <span>{{ object.pet_set.count }}</span>
                     <p>pets</p>
 
                     <!-- Total Number of Likes for the User -->
-                    <span>436</span>
+                    <span>{{ object.like_set.count }}</span>
                     <p>likes</p>
                 </div>
                 <!-- User First and Last Name IF Added -->
@@ -63,7 +63,7 @@
         <!-- End Profile Personal Data Section -->
 
         <!-- Start Pets Data Section -->
-        <div class="pets">1
+        <div class="pets">
             <div class="statuses">
                 {% for pet in object.pet_set.all %}
                     <!-- Start 1st Pet Details Page -->
