@@ -93,7 +93,7 @@
                 <!-- Link to Last Uploaded Pet Photo -->
                 <a href="{% url 'photo-details' photo.pk %}">
                     <!-- Pet Photo -->
-                    <img src="{{ photo.personal_photo.url }}"
+                    <img src="{{ photo.photo.url }}"
                          alt="{{ photo.name }}">
                 </a>
             {% endfor %}
