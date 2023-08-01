@@ -1,9 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
 from petstagram.photos.models import Photo
 
 UserModel = get_user_model()
+
 
 class Comment(models.Model):
     comment_text = models.TextField(max_length=300)

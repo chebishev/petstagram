@@ -7,6 +7,7 @@ from petstagram.accounts.forms import RegisterUserForm, LoginUserForm
 
 UserModel = get_user_model()
 
+
 class RegisterUserView(CreateView):
     template_name = 'register-page.html'
     form_class = RegisterUserForm
@@ -34,6 +35,7 @@ class LoginUserView(LoginView):
     template_name = 'login-page.html'
     form_class = LoginUserForm
 
+
 class LogoutUserView(LogoutView):
     next_page = reverse_lazy("login")
 
@@ -57,8 +59,10 @@ class ProfileDetailsView(DetailView):
 
         return context
 
+
 class ProfileEditView(UpdateView):
     template_name = 'profile-edit-page.html'
+
 
 class ProfileDeleteView(DeleteView):
     template_name = 'profile-delete-page.html'

@@ -1,6 +1,6 @@
 from django.urls import path, include
 from .views import RegisterUserView, LoginUserView, LogoutUserView, \
-    ProfileDetailsView,ProfileEditView, ProfileDeleteView
+    ProfileDetailsView, ProfileEditView, ProfileDeleteView
 
 urlpatterns = [
 

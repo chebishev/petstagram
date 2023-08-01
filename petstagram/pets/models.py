@@ -4,12 +4,12 @@ from django.template.defaultfilters import slugify
 
 UserModel = get_user_model()
 
-class Pet(models.Model):
 
+class Pet(models.Model):
     name = models.CharField(
         max_length=30,
-        null = False,
-        blank = False,
+        null=False,
+        blank=False,
     )
     personal_photo = models.URLField(
         blank=False,
@@ -31,5 +31,3 @@ class Pet(models.Model):
         if not self.slug:
             self.slug = slugify(f'{self.name}-{self.id}')
         return super().save(*args, **kwargs)
-
-

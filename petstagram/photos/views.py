@@ -22,6 +22,7 @@ class PhotoAddView(CreateView):
         self.object.save()
         return super().form_valid(form)
 
+
 @login_required
 def photo_details(request, pk):
     photo = Photo.objects.get(pk=pk)
