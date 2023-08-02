@@ -46,7 +46,7 @@
                     <span class="heart">
 									<a href="{% url 'like' photo.id %}">
 										<!-- if user has liked the photo -->
-                                        {% if photo.like_set.all %}
+                                        {% if photo.liked_by_user %}
                                             <svg style="color: red"
                                                  xmlns="http://www.w3.org/2000/svg"
                                                  width="24"

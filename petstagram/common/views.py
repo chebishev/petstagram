@@ -9,7 +9,6 @@ from petstagram.photos.models import Photo
 # Create your views here.
 def index(request):
     all_photos = Photo.objects.all()
-    form = CommentForm()
     search_form = SearchForm()
 
     if request.method == "POST":
@@ -18,9 +17,13 @@ def index(request):
             all_photos = all_photos.filter(
                 tagged_pets__name__icontains=search_form.cleaned_data['pet_name']
             )
+
+    for photo in all_photos:
+        photo.liked_by_user = photo.like_set.filter(user=request.user).exists()
+
     context = {
         'all_photos': all_photos,
-        'form': form,
+        'form': CommentForm(),
         'search_form': search_form
     }
     return render(request, 'home-page.html', context)
@@ -29,12 +32,14 @@ def index(request):
 @login_required
 def like_functionality(request, photo_id):
     photo = Photo.objects.get(id=photo_id)
-    liked_object = Like.objects.filter(to_photo_id=photo_id).first()
+    liked_object = Like.objects \
+        .filter(to_photo_id=photo_id, user=request.user) \
+        .first()
 
     if liked_object:
         liked_object.delete()
     else:
-        like = Like(to_photo=photo)
+        like = Like(to_photo=photo, user=request.user)
         like.save()
 
     return redirect(request.META['HTTP_REFERER'] + f"#{photo_id}")
