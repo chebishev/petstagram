@@ -45,7 +45,7 @@ class PetstagramUser(AbstractUser):
     gender = models.CharField(
         max_length=Gender.max_length(),
         choices=Gender.choices(),
-        default=Gender.DO_NOT_SHOW
+        default="Do not show"
     )
 
     @property

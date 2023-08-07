@@ -19,7 +19,7 @@ def index(request):
             )
 
     for photo in all_photos:
-        photo.liked_by_user = photo.like_set.filter(user=request.user).exists()
+        photo.liked_by_user = photo.like_set.filter(user_id=request.user.id).exists()
 
     context = {
         'all_photos': all_photos,
